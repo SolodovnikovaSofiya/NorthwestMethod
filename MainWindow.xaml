@@ -1,0 +1,36 @@
+﻿<Window x:Class="NorthwestMethod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NorthwestMethod"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+
+            <!-- Ввод количества -->
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Поставщики:" VerticalAlignment="Center"/>
+                <TextBox x:Name="SuppliersTextBox" Width="50" Margin="5"/>
+                <TextBlock Text="Потребители:" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                <TextBox x:Name="ConsumersTextBox" Width="50" Margin="5"/>
+                <Button Content="Сгенерировать таблицу" Click="GenerateTable_Click" Margin="10 0" Height="23"/>
+                <Button Content="Очистить" Click="Clear_Click" Width="100" Margin="10"/>
+
+            </StackPanel>
+
+            <!-- Таблица -->
+            <Grid x:Name="InputGrid" Margin="0 10 0 10" />
+
+            <!-- Кнопка решения -->
+            <Button Content="Решить задачу" Click="Solve_Click" Width="150" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="ResultTextBlock" 
+           FontSize="14" 
+           Foreground="Red" 
+           Margin="0,10,0,0"
+           TextWrapping="Wrap" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
