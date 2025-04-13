@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -220,6 +221,7 @@ namespace NorthwestMethod
                         cost = newCost;
                         consumers++;
                     }
+
                 }
 
                 // Метод северо-западного угла
@@ -314,6 +316,25 @@ namespace NorthwestMethod
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при очистке: {ex.Message}");
+            }
+        }
+        private void SaveToFile_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            saveFileDialog.FileName = "результат_северо_западный_угол.txt";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    File.WriteAllText(saveFileDialog.FileName, ResultTextBlock.Text);
+                    MessageBox.Show("Результат успешно сохранён.", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при сохранении: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
